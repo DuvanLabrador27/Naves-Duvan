@@ -1,0 +1,86 @@
+{%  extends "base.html" %}
+
+{% block title %} Lista de naves {% endblock %}
+
+{% block contenido %}  
+    <div class="card mt-3   ">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="#" role="button">Agregar Nave</a>
+            <a name="" id="" class="btn btn-info text-light" href="{% url 'inicio' %}">Cancelar</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Naves Lanzaderas</h4>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Pais</th>
+                    <th>Peso</th>
+                    <th>Altura</th>
+                    <th>Velocidad</th>
+                    <th>Capacidad de carga</th>
+                    <th>Potencia</th>
+                    <th>Fecha</th>
+                    <th>Tipo de nave</th>
+                    <th>Tipo de carga</th>
+                    <th>Tipo de combustible</th>
+                    <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for nave in naves %}
+                  <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ nave.id }}</td>
+                      <td>{{ nave.nombreNave }}</td>
+                      <td>{{ nave.paisNave }}</td>
+                      <td>{{ nave.pesoNave }}</td>
+                      <td>{{ nave.alturaNave }}</td>
+                      <td>{{ nave.velocidadNave }}</td>
+                      <td>{{ nave.capacidadNave }}</td>
+                      <td>{{ nave.potenciaNave }}</td>
+                      <td>{{ nave.fecha }}</td>
+                      <td>
+                        {% if nave.tipoNave == '1' %}
+                            Vehiculo Lanzadera
+                        {% elif nave.tipoNave == '2' %}
+                            Naves no tripuladas
+                        {% elif nave.tipoNave == '3' %}
+                            Naves tripuladas
+                            {%endif%}
+
+                    </td>
+                      <td>
+                        {% if nave.tipoCarga == '1' %}
+                            Satelite artificial
+                        {% elif nave.tipoCarga == '2' %}
+                            Sonda
+                        {%endif%}
+                    
+                    </td>
+                      <td>
+                        {% if nave.tipoCombustible == '1' %}
+                            Quimico Solido
+                        {% elif nave.tipoCombustible == '2' %}
+                            Propelente Liquido
+                        {%endif%}
+
+                      </td>
+                      <td>
+                          <a name="" id="" class="btn btn-primary" href="#" role="button">Editar</a><br><br>
+
+                         <a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                        </td> 
+                    
+
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          
+
+        </div>
+    </div>
+{% endblock %}

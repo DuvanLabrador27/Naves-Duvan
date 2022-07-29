@@ -1,0 +1,92 @@
+{%  extends "base.html" %}
+
+{% block title %} Lista de naves {% endblock %}
+
+{% block contenido %}  
+    <div class="card mt-3   ">
+        <div class="card-header">
+           <a name="" id="" class="btn btn-success" href="#" role="button">Agregar Nave</a>
+           <a name="" id="" class="btn btn-info text-light" href="{% url 'inicio' %}">Cancelar</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Naves no tripuladas</h4>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Pais</th>
+                    <th>Peso</th>
+                    <th>Altura</th>
+                    <th>Velocidad</th>
+                    <th>Capacidad de carga</th>
+                    <th>Potencia</th>
+                    <th>Fecha</th>
+                    <th>Tipo de nave</th>
+                    <th>Cantidad de motores</th>
+                    <th>Tipo de planeta</th>
+                    <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for naveno in navesno %}
+                  <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ naveno.id }}</td>
+                      <td>{{ naveno.nombreNave }}</td>
+                      <td>{{ naveno.paisNave }}</td>
+                      <td>{{ naveno.pesoNave }}</td>
+                      <td>{{ naveno.alturaNave }}</td>
+                      <td>{{ naveno.velocidadNave }}</td>
+                      <td>{{ naveno.capacidadNave }}</td>
+                      <td>{{ naveno.potenciaNave }}</td>
+                      <td>{{ naveno.fecha }}</td>
+                      <td>
+                        {% if naveno.tipoNave == '1' %}
+                            Vehiculo Lanzadera
+                        {% elif naveno.tipoNave == '2' %}
+                            Naves no tripuladas
+                        {% elif naveno.tipoNave == '3' %}
+                            Naves tripuladas
+                            {%endif%}
+
+                    </td>
+                    <td>{{ naveno.cantidadMotores }}</td>
+                      
+                      <td>
+                        {% if naveno.tipoPlaneta == '1' %}
+                            Saturno y sus lunas
+                        {% elif naveno.tipoPlaneta == '2' %}
+                            Jupiter
+                        {% elif naveno.tipoPlaneta == '3' %}
+                            Marte
+                        {% elif naveno.tipoPlaneta == '4' %}
+                            Mercurio
+                        {% elif naveno.tipoPlaneta == '5' %}
+                            pluton
+                        {% elif naveno.tipoPlaneta == '6' %}
+                            Urano y Neptuno
+                        {% elif naveno.tipoPlaneta == '7' %}
+                            Sol
+                        {% elif naveno.tipoPlaneta == '8' %}
+                            Venus
+                        {%endif%}
+
+                      </td>
+                      <td>
+                          <a name="" id="" class="btn btn-primary" href="#" role="button">Editar</a><br><br>
+
+                         <a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                        </td> 
+                    
+
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          
+
+        </div>
+    </div>
+{% endblock %}

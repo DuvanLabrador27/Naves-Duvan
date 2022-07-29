@@ -8,7 +8,7 @@ from django.db import models
 class Nave(models.Model):
     #id = models.AutoField(primary_key=True)
     decisionesNaves = [('1','Vehiculo Lanzadera'),('2','Naves no tripuladas'),('3','Naves tripuladas')]
-    nombreNave = models.CharField(max_length=50)
+    nombreNave = models.CharField(max_length=50,verbose_name="Nombre de la nave")
     paisNave = models.CharField(max_length=50)
     pesoNave = models.CharField(max_length=50)
     alturaNave = models.CharField(max_length=50)
